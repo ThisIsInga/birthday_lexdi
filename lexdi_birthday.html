@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С Днём Рождения, LeXDi!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #ffd6e8, #c9e4ff, #a8d8ff);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #3a4a6b;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.55);
+            border-radius: 20px;
+            box-shadow: 0 0 45px rgba(255, 138, 190, 0.5), 0 0 80px rgba(120, 190, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            animation: appear 1.5s ease-out;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #ff7eb9, #7eb8ff, #ff7eb9);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        .name {
+            font-size: 3.5em;
+            font-weight: bold;
+            background: linear-gradient(90deg, #ff6fa5, #6fb7ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 25px rgba(255, 138, 190, 0.6);
+            margin: 15px 0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.7;
+            margin: 15px 0;
+            color: #4a5a7b;
+        }
+
+        .emoji {
+            font-size: 2em;
+            margin: 10px 0;
+        }
+
+        .cake {
+            font-size: 4em;
+            margin: 20px 0;
+            animation: bounce 1.5s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .wishes {
+            margin-top: 20px;
+            padding: 20px;
+            border-top: 1px solid rgba(255, 138, 190, 0.4);
+        }
+
+        .wishes p {
+            font-size: 1.1em;
+        }
+
+        /* Падающее конфетти */
+        .confetti {
+            position: fixed;
+            top: -10px;
+            width: 10px;
+            height: 10px;
+            background: #ff8ac0;
+            opacity: 0.85;
+            animation: fall linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(720deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="cake">🎂</div>
+        <h1>С Днём Рождения!</h1>
+        <div class="name">LeXDi</div>
+        <div class="emoji">🎉 🎈 🎁</div>
+
+        <p>Сегодня твой особенный день!</p>
+
+        <div class="wishes">
+            <p>Желаю тебе море позитива, крепкого здоровья,</p>
+            <p>исполнения всех желаний и верных друзей рядом!</p>
+            <p>Пусть каждый день приносит радость и новые победы!</p>
+        </div>
+
+        <div class="emoji" style="margin-top: 25px;">🥳 🍾 🎊</div>
+    </div>
+
+    <script>
+        // Розово-голубая палитра конфетти
+        const colors = ['#ff7eb9', '#ff8ac0', '#7eb8ff', '#a8d8ff', '#ffb3d9', '#9cc9ff'];
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            confetti.style.animationDelay = Math.random() * 2 + 's';
+            confetti.style.width = (Math.random() * 8 + 5) + 'px';
+            confetti.style.height = confetti.style.width;
+            confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+            document.body.appendChild(confetti);
+
+            setTimeout(() => confetti.remove(), 8000);
+        }
+
+        // Создаём конфетти каждые 200 мс
+        setInterval(createConfetti, 200);
+
+        // Первая партия сразу
+        for (let i = 0; i < 20; i++) {
+            setTimeout(createConfetti, i * 100);
+        }
+    </script>
+
+</body>
+</html>
